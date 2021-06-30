@@ -21,13 +21,13 @@ final class Platform extends MySqlPlatform {
 
 	/**
 	 * https://mariadb.com/kb/en/row_number/
-	 * 
+	 *
 	 * @return bool
 	 */
 	public function supportsRowNumberFunction(): bool {
 		return true;
 	}
-	
+
 	/**
 	 * {@inheritdoc}
 	 */

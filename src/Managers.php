@@ -6,8 +6,7 @@ use Doctrine\ORM\EntityManager;
 
 final class Managers {
 
-	
-	
+
 	/** @var EntityManager */
 	public $original;
 
