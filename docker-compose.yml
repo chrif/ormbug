@@ -1,0 +1,25 @@
+version: '2.4'
+
+services:
+  db:
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+      MYSQL_DATABASE: ormbug
+    image: mariadb
+    volumes:
+      - db:/var/lib/mysql
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --password=123 --execute \"SHOW DATABASES;\""
+
+  app:
+    build: .
+    working_dir: /app
+    entrypoint: sh /app/entrypoint.sh
+    depends_on:
+      db:
+        condition: "service_healthy"
+    volumes:
+      - ".:/app"
+
+volumes:
+  db:
